@@ -19,7 +19,7 @@ fun main() {
 
 private fun readBountyBoard() {
     println("The hero approaches the bounty board. It reads: ")
-    println(obtainQuest(playerLevel))
+    println(obtainQuest(playerLevel, playerClass = "priest", hasAngeredBarbarians = false))
 }
 
 private fun obtainQuest(
