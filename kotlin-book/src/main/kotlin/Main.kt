@@ -20,14 +20,14 @@ fun main() {
 
 private fun readBountyBoard(){
     println("The hero approaches the bounty board. It reads: ")
-    println(obtainQuest(playerLevel, "paladin", true, false))
+    println(obtainQuest(playerLevel))
 }
 
 private fun obtainQuest(
     playerLevel: Int,
-    playerClass: String,
-    hasAngeredBarbarians: Boolean,
-    hasBeFriendedBarbarians: Boolean,
+    playerClass: String = "paladin",
+    hasAngeredBarbarians: Boolean = true,
+    hasBeFriendedBarbarians: Boolean = false,
 ): String {
     val quest = when (playerLevel) {
         1 -> "Meet Mr. Bubbles in the land of soft things."
@@ -39,7 +39,6 @@ private fun obtainQuest(
                 "Save the town from the barbarian invasions."
             }
         }
-
         6 -> "Locate the enchanted sword."
         7 -> "Recover the long-lost artifact of creation."
         8 -> "Defeat Nogartse, bringer of death and eater of worlds."
