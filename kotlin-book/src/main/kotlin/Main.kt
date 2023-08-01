@@ -17,8 +17,12 @@ fun main() {
 }
 
 private fun readBountyBoard() {
-    println("$HERO_NAME approaches the bounty board. It reads: ")
-    println("\t\"${obtainQuest(playerLevel)}\"")
+    println(
+        """
+            |$HERO_NAME approaches the bounty board. It reads: 
+            |   "${obtainQuest(playerLevel)}"
+        """.trimMargin()
+    )
 }
 
 private fun obtainQuest(
@@ -42,5 +46,3 @@ private fun obtainQuest(
     8 -> "Defeat Nogartse, bringer of death and eater of worlds."
     else -> "There are no quests right now."
 }
-
-//125
