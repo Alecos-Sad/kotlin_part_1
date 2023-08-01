@@ -1,8 +1,8 @@
 package by.sadovnick.bountybound.nyetack
 
-val narrationModifier: (String) -> String =  {message ->
+val narrationModifier: (String) -> String =  {
     val numExclamationPoint = 3
-    message.uppercase() + "!".repeat(numExclamationPoint)
+    it.uppercase() + "!".repeat(numExclamationPoint)
 }
 
 fun narrate(message: String) {
