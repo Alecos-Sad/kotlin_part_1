@@ -1,11 +1,11 @@
 const val HERO_NAME = "Madrigal"
-var playerLevel = 5;
+var playerLevel = 0
 
 fun main() {
     println("$HERO_NAME announces her presence to the world.")
     println("What level is $HERO_NAME?")
-    val input = readLine()
-    println("$HERO_NAME's level is $input")
+    playerLevel = readLine()!!.toInt()
+    println("$HERO_NAME's level is $playerLevel")
 
     readBountyBoard()
 
@@ -35,7 +35,9 @@ private fun obtainQuest(
 ): String = when (playerLevel) {
     1 -> "Meet Mr. Bubbles in the land of soft things."
     in 2..5 -> {
-        val canTalkToBarbarians = !hasAngeredBarbarians && (hasBeFriendedBarbarians || playerClass == "barbarian")
+        val canTalkToBarbarians = !hasAngeredBarbarians
+                && (hasBeFriendedBarbarians
+                || playerClass == "barbarian")
         if (canTalkToBarbarians) {
             "Convince the barbarians to call off their invasion."
         } else {
