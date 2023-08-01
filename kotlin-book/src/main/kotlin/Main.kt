@@ -5,7 +5,7 @@ fun main() {
     println("$HERO_NAME announces her presence to the world.")
     println("What level is $HERO_NAME?")
     val playerLevelInput = readln()!!
-    println("$HERO_NAME's level is $playerLevel")
+    println("$HERO_NAME's level is $playerLevelInput")
     playerLevel = if (playerLevelInput.matches(
             """\d+""".toRegex())) {
         playerLevelInput.toInt()
@@ -25,12 +25,16 @@ fun main() {
 }
 
 private fun readBountyBoard() {
-    println(
-        """
+    val quest = obtainQuest(playerLevel)
+    if (quest != null){
+        val censoredQuest = quest.replace("Norgatse", "xxxxxxxxx")
+        println(
+            """
             |$HERO_NAME approaches the bounty board. It reads: 
-            |   "${obtainQuest(playerLevel).replace("Nogartse", "xxxxxxx")}"
+            |   "$censoredQuest}"
         """.trimMargin()
-    )
+        )
+    }
 }
 
 private fun obtainQuest(
@@ -38,7 +42,7 @@ private fun obtainQuest(
     playerClass: String = "paladin",
     hasAngeredBarbarians: Boolean = true,
     hasBeFriendedBarbarians: Boolean = false,
-): String = when (playerLevel) {
+): String? = when (playerLevel) {
     1 -> "Meet Mr. Bubbles in the land of soft things."
     in 2..5 -> {
         val canTalkToBarbarians = !hasAngeredBarbarians
@@ -53,5 +57,5 @@ private fun obtainQuest(
     6 -> "Locate the enchanted sword."
     7 -> "Recover the long-lost artifact of creation."
     8 -> "Defeat Nogartse, bringer of death and eater of worlds."
-    else -> "There are no quests right now."
+    else -> null
 }
