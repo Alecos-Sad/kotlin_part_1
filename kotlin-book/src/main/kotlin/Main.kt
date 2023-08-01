@@ -1,5 +1,3 @@
-import kotlin.coroutines.coroutineContext
-
 const val HERO_NAME = "Madrigal"
 var playerLevel = 0
 
@@ -31,12 +29,12 @@ fun main() {
 private fun readBountyBoard() {
     val quest = obtainQuest(playerLevel)
     val message = quest?.replace("Nogartse", "xxxxxxxxx")
-    ?.let {censoredQuest ->
+        ?.let { censoredQuest ->
             """
             |$HERO_NAME approaches the bounty board. It reads: 
             |   "$censoredQuest"
         """.trimMargin()
-    }
+        } ?: "$HERO_NAME approaches the bounty board, but it is blank."
     println(message)
 }
 
