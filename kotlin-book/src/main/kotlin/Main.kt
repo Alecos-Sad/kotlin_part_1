@@ -4,8 +4,8 @@ var playerLevel = 0
 fun main() {
     println("$HERO_NAME announces her presence to the world.")
     println("What level is $HERO_NAME?")
-    println("$HERO_NAME's level is $playerLevel")
     val playerLevelInput = readln()!!
+    println("$HERO_NAME's level is $playerLevel")
     playerLevel = if (playerLevelInput.matches(
             """\d+""".toRegex())) {
         playerLevelInput.toInt()
@@ -28,7 +28,7 @@ private fun readBountyBoard() {
     println(
         """
             |$HERO_NAME approaches the bounty board. It reads: 
-            |   "${obtainQuest(playerLevel)}"
+            |   "${obtainQuest(playerLevel).replace("Nogartse", "xxxxxxx")}"
         """.trimMargin()
     )
 }
@@ -50,7 +50,6 @@ private fun obtainQuest(
             "Save the town from the barbarian invasions."
         }
     }
-
     6 -> "Locate the enchanted sword."
     7 -> "Recover the long-lost artifact of creation."
     8 -> "Defeat Nogartse, bringer of death and eater of worlds."
