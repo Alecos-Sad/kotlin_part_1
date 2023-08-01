@@ -2,14 +2,13 @@ const val HERO_NAME = "Madrigal"
 var playerLevel = 5;
 
 fun main() {
-    println("The hero announces her presence to the world.")
-    println(HERO_NAME)
+    println("$HERO_NAME announces her presence to the world.")
     println(playerLevel)
 
     readBountyBoard()
 
     println("Time passes...")
-    println("There are no quests right now.")
+    println("$HERO_NAME returns from her quest")
 
     playerLevel += 1
     println(playerLevel)
@@ -18,8 +17,8 @@ fun main() {
 }
 
 private fun readBountyBoard() {
-    println("The hero approaches the bounty board. It reads: ")
-    println(obtainQuest(playerLevel, playerClass = "priest", hasAngeredBarbarians = false))
+    println("$HERO_NAME approaches the bounty board. It reads: ")
+    println("\t\"${obtainQuest(playerLevel)}\"")
 }
 
 private fun obtainQuest(
@@ -43,3 +42,5 @@ private fun obtainQuest(
     8 -> "Defeat Nogartse, bringer of death and eater of worlds."
     else -> "There are no quests right now."
 }
+
+//125
