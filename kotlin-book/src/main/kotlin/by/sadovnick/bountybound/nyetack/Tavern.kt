@@ -20,14 +20,23 @@ fun visitTavern() {
     }
     println(otherMessage)
 
-    narrate("Eli leaves the tavern")
-    patrons.remove("Eli")
-    narrate("Alex enters the tavern")
-    patrons.add("Alex")
-    println(patrons)
-    narrate("Alex (VIP) enters the tavern")
-    patrons.add(0, "Alex")
-    println(patrons)
-    patrons[0] = "Alexis"
-    println(patrons)
+    for (patron in patrons) {
+        println("Good evening $patron")
+    }
+
+    for (i in 0 until patrons.size){
+        println(patrons[i])
+    }
+
+    for (i in patrons.size - 1 downTo 0 step 2){
+        println(patrons[i])
+    }
+
+    patrons.forEach{
+        patron -> println("Good evening $patron")
+    }
+
+    patrons.forEachIndexed{index, patron ->
+        println("Good evening, $patron - you're #${index + 1} in line")
+    }
 }
