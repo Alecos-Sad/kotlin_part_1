@@ -1,7 +1,12 @@
 package by.sadovnick.bountybound.nyetack
 
+import java.io.File
+
 private const val TAVERN_MASTER = "Taernyl"
 private const val TAVERN_NAME = "$TAVERN_MASTER's Folly"
+private val menuData = File("data/tavern-menu-data.txt")
+    .readText()
+    .split("\n")
 
 fun visitTavern() {
     narrate("$heroName enters $TAVERN_NAME")
@@ -20,23 +25,17 @@ fun visitTavern() {
     }
     println(otherMessage)
 
-    for (patron in patrons) {
-        println("Good evening $patron")
-    }
-
-    for (i in 0 until patrons.size){
-        println(patrons[i])
-    }
-
-    for (i in patrons.size - 1 downTo 0 step 2){
-        println(patrons[i])
-    }
-
-    patrons.forEach{
-        patron -> println("Good evening $patron")
-    }
-
     patrons.forEachIndexed{index, patron ->
         println("Good evening, $patron - you're #${index + 1} in line")
+        placeOrder(patron, "Dragon's breath")
     }
+
+    menuData.forEachIndexed { index, data ->
+        println("$index : $data")
+    }
+}
+
+private fun placeOrder(patronName:String, menuItemName:String){
+    narrate("$patronName speaks with $TAVERN_MASTER to place an order")
+    narrate("$TAVERN_MASTER hands $patronName a $menuItemName")
 }
