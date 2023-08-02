@@ -43,18 +43,18 @@ fun changeNarratorMood() {
             }
         }
 
-        4-> {
+        4 -> {
             var narrationsGiven = 0
             mood = "like sending an itemized bill"
-            modifier = {message ->
-                narrationsGiven ++
+            modifier = { message ->
+                narrationsGiven++
                 "$message.\n(I have narrated $narrationsGiven things)"
             }
         }
 
-        5-> {
+        5 -> {
             mood = "lazy"
-            modifier = {message ->
+            modifier = { message ->
                 message.take(message.length / 2)
             }
         }
