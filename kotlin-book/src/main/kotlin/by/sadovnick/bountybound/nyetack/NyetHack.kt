@@ -6,7 +6,19 @@ fun main() {
             message ->
         "\u001b[33;1m$message\u001b[0m"
     }
-    val heroName = readLine() ?: ""
+    val heroName = readLine()
+    require(!heroName.isNullOrEmpty()) {
+        "The hero must have a name"
+    }
     changeNarratorMood()
-    narrate("$heroName heads to the town square")
+    narrate("$heroName, ${createTitle(heroName)}, heads to the town square")
+}
+
+private fun createTitle(name: String): String{
+    return when{
+        name.all { it.isDigit() } -> "The Identifiable"
+        name.none { it.isLetter() } -> "The Witness Protection Member"
+        name.count { it.lowercase() in "aeiou" } > 4 -> "The Master of Vowel"
+        else -> "The Renowned Hero"
+    }
 }
