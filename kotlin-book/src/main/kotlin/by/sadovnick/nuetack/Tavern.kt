@@ -13,6 +13,14 @@ private val menuItems = List(menuData.size) { index ->
     val (_, name, _) = menuData[index].split(",")
     name
 }
+private val menuItemPrices: Map<String, Double> = List(menuData.size) { index ->
+    val (_, name, price) = menuData[index].split(",")
+    name to price.toDouble()
+}.toMap()
+private val menuItemTypes: Map<String, String> = List(menuData.size) { index ->
+    val (type, name, _) = menuData[index].split(",")
+    name to type
+}.toMap()
 
 fun visitTavern() {
     narrate("$heroName enters $TAVERN_NAME")
@@ -44,11 +52,15 @@ private fun placeOrder(
     menuItemName: String,
     patronGold: MutableMap<String, Double>
 ) {
-    val itemPrice = 1
+    val itemPrice = menuItemPrices.getValue(menuItemName)
     narrate("$patronName speaks with $TAVERN_MASTER to place an order")
     if (itemPrice <= patronGold.getOrDefault(patronName, 0.0)) {
-        narrate("$TAVERN_MASTER hands $patronName a $menuItemName")
-        narrate("$patronName pays $TAVERN_MASTER $itemPrice gold")
+        val action = when (menuItemTypes[menuItemName]) {
+            "shandy", "elixir" -> "pours"
+            "meal" -> "serves"
+            else -> "hands"
+        }
+        narrate("$TAVERN_MASTER $action $patronName a $menuItemName")
         patronGold[patronName] = patronGold.getValue(patronName) - itemPrice
         patronGold[TAVERN_MASTER] = patronGold.getValue(TAVERN_MASTER) + itemPrice
     } else {
