@@ -1,4 +1,4 @@
-package by.sadovnick.bountybound.nyetack
+package by.sadovnick.nuetack
 
 var heroName = ""
 

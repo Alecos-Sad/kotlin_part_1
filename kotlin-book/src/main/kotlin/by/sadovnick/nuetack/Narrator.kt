@@ -1,4 +1,4 @@
-package by.sadovnick.bountybound.nyetack
+package by.sadovnick.nuetack
 
 import kotlin.random.Random
 import kotlin.random.nextInt
