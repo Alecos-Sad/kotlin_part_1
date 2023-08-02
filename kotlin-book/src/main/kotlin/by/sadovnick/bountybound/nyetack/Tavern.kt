@@ -7,9 +7,15 @@ private const val TAVERN_NAME = "$TAVERN_MASTER's Folly"
 private val menuData = File("data/tavern-menu-data.txt")
     .readText()
     .split("\n")
+private val menuItems = List(menuData.size) { index ->
+    val (_, name, _) = menuData[index].split(",")
+    name
+}
 
 fun visitTavern() {
     narrate("$heroName enters $TAVERN_NAME")
+    narrate("There are several items for sale: ")
+    println(menuItems)
     val patrons = mutableListOf("Eli", "Mordoc", "Sophie")
     val readOnlyPatrons = patrons.toList();
     val elliMessage = if (patrons.contains("Eli")) {
@@ -25,17 +31,13 @@ fun visitTavern() {
     }
     println(otherMessage)
 
-    patrons.forEachIndexed{index, patron ->
+    patrons.forEachIndexed { index, patron ->
         println("Good evening, $patron - you're #${index + 1} in line")
-        placeOrder(patron, "Dragon's breath")
-    }
-
-    menuData.forEachIndexed { index, data ->
-        println("$index : $data")
+        placeOrder(patron, menuItems.random())
     }
 }
 
-private fun placeOrder(patronName:String, menuItemName:String){
+private fun placeOrder(patronName: String, menuItemName: String) {
     narrate("$patronName speaks with $TAVERN_MASTER to place an order")
     narrate("$TAVERN_MASTER hands $patronName a $menuItemName")
 }
