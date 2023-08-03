@@ -9,18 +9,14 @@ private val lastNames = setOf("Ironfoot", "Fernsworth", "Baggins", "Downstrider"
 private val menuData = File("data/tavern-menu-data.txt")
     .readText()
     .split("\n")
-private val menuItems = menuData.map { menuEntry ->
-    val (_, name, _) = menuEntry.split(",")
-    name
-}
-private val menuItemPrices = menuData.associate { menuEntry ->
-    val (_, name, price) = menuEntry.split(",")
+    .map { it.split(",") }
+private val menuItems = menuData.map { (_, name, _) -> name }
+private val menuItemPrices = menuData.associate { (_, name, price) ->
     name to price.toDouble()
-}.toMap()
-private val menuItemTypes = menuData.associate { menuEntry ->
-    val (type, name, _) = menuEntry.split(",")
+}
+private val menuItemTypes = menuData.associate { (type, name, _) ->
     name to type
-}.toMap()
+}
 
 fun visitTavern() {
     narrate("$heroName enters $TAVERN_NAME")
