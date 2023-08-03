@@ -1,6 +1,9 @@
 package by.sadovnick.nuetack
 
 import java.io.File
+import kotlin.random.Random
+import kotlin.random.nextInt
+
 
 private const val TAVERN_MASTER = "Taernyl"
 private const val TAVERN_NAME = "$TAVERN_MASTER's Folly"
@@ -35,6 +38,8 @@ fun visitTavern() {
     }
     narrate("$heroName sees several patrons in the tavern: ")
     narrate(patrons.joinToString())
+    val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
+    println("The item of the day is the $itemOfDay")
     repeat(3) {
         placeOrder(patrons.random(), menuItems.random(), patronGold)
     }
@@ -67,6 +72,15 @@ private fun displayPatronBalances(patronGold: Map<String, Double>) {
     narrate("$heroName intuitively knows how much money each patron has: ")
     patronGold.forEach { (patron, balance) ->
         narrate("$patron has ${"%.2f".format(balance)} gold")
+    }
+}
+
+private fun getFavoriteMenuItems(patron: String): List<String> {
+    return when (patron) {
+        "Alex Ironfoot" -> menuItems.filter { menuItem ->
+            menuItemTypes[menuItem]?.contains("dessert") == true
+        }
+        else -> menuItems.shuffled().take(Random.nextInt(1..2))
     }
 }
 
