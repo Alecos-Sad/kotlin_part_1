@@ -41,10 +41,13 @@ fun visitTavern() {
         placeOrder(patrons.random(), menuItems.random(), patronGold)
     }
     displayPatronBalances(patronGold)
-    val departingPatrons = patrons.filter { patron -> patronGold.getOrDefault(patron, 0.0) < 4.0 }
-    patrons -= departingPatrons.toSet()
-    patronGold -= departingPatrons.toSet()
-    departingPatrons.forEach { patron -> narrate("$heroName sees $patron departing the tavern") }
+
+    patrons.filter { patron -> patronGold.getOrDefault(patron, 0.0) < 4.0 }
+        .also { departingPatrons ->
+            patrons -= departingPatrons.toSet()
+            patronGold -= departingPatrons.toSet()
+        }
+        .forEach { patron -> narrate("$heroName sees $patron departing the tavern") }
 
     narrate("There are still some patrons in the tavern")
     narrate(patrons.joinToString())
