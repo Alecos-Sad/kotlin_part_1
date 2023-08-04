@@ -1,7 +1,13 @@
 package by.sadovnick.nuetack
 
-class Player {
-    var name = "Madrigal"
+class Player(
+    initialName: String,
+    val hometown: String,
+    var healthPoints: Int,
+    val isImmortal: Boolean
+) {
+
+    var name = initialName
         get() = field.replaceFirstChar { it.uppercaseChar() }
         private set(value) {
             field = value.trim()
