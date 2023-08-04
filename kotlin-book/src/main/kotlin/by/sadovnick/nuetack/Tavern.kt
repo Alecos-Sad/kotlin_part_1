@@ -22,7 +22,7 @@ private val menuItemTypes = menuData.associate { (type, name, _) ->
 }
 
 fun visitTavern() {
-    narrate("$heroName enters $TAVERN_NAME")
+    narrate("${player.name} enters $TAVERN_NAME")
     narrate("There are several items for sale: ")
     narrate(menuItems.joinToString())
     val patrons = firstNames.shuffled().zip(lastNames.shuffled()) { firstName, lastName ->
@@ -30,10 +30,10 @@ fun visitTavern() {
     }.toMutableSet()
     val patronGold = mutableMapOf(
         TAVERN_MASTER to 86.00,
-        heroName to 4.50,
+        player.name to 4.50,
         *patrons.map { it to 6.00 }.toTypedArray()
     )
-    narrate("$heroName sees several patrons in the tavern: ")
+    narrate("${player.name} sees several patrons in the tavern: ")
     narrate(patrons.joinToString())
     val itemOfDay = patrons.flatMap { getFavoriteMenuItems(it) }.random()
     println("The item of the day is the $itemOfDay")
@@ -47,7 +47,7 @@ fun visitTavern() {
             patrons -= departingPatrons.toSet()
             patronGold -= departingPatrons.toSet()
         }
-        .forEach { patron -> narrate("$heroName sees $patron departing the tavern") }
+        .forEach { patron -> narrate("${player.name} sees $patron departing the tavern") }
 
     narrate("There are still some patrons in the tavern")
     narrate(patrons.joinToString())

@@ -1,11 +1,12 @@
 package by.sadovnick.nuetack
 
 var heroName = ""
+val player = Player()
 
 fun main() {
-    heroName = promptHeroName()
-    narrate("$heroName, ${createTitle(heroName)}, heads to the town square")
+    narrate("${player.name}, ${createTitle(player.name)}, heads to the town square")
     visitTavern()
+    player.castFireBall()
 }
 
 private fun createTitle(name: String): String {
