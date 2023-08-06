@@ -1,7 +1,7 @@
 package by.sadovnick.nuetack
 
 var heroName = ""
-val player = Player("Jason",  "Jacksonville", 100, false)
+val player = Player("Jason")
 
 fun main() {
     val mortality = if (player.isImmortal) "an immortal" else "mortal"
@@ -12,7 +12,7 @@ fun main() {
     player.castFireBall()
 }
 
-private fun promptHeroName():String{
+private fun promptHeroName(): String {
     narrate("A hero enters the town of Kronstadt. What is their name?") { message ->
         // Выводит message желтым цветом
         "\u001b[33;1m$message\u001b[0m"
