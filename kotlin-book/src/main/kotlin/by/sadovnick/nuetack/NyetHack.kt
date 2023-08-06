@@ -1,5 +1,8 @@
 package by.sadovnick.nuetack
 
+import by.sadovnick.nuetack.models.Player
+import by.sadovnick.nuetack.rooms.Room
+
 var heroName = ""
 lateinit var player: Player
 
@@ -9,11 +12,11 @@ fun main() {
     player = Player(playerName)
     //changeNarratorMood()
     player.prophesize()
+    var currentRoom = Room("The Foyer")
     val mortality = if (player.isImmortal) "an immortal" else "mortal"
-    narrate("${player.name}, ${player.title}, heads to the town square")
+    narrate("${player.name} of ${player.hometown}, ${player.title} is in ${currentRoom.description()}")
     narrate("${player.name}, ${mortality}, has ${player.healthPoints} health points")
-
-    visitTavern()
+    currentRoom.enterRoom()
     player.castFireBall()
     player.prophesize()
 }

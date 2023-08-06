@@ -1,4 +1,4 @@
-package by.sadovnick.nuetack
+package by.sadovnick.nuetack.models
 
 class Villager(
     val name: String,

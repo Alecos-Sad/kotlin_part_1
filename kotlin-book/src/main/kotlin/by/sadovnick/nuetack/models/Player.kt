@@ -1,4 +1,6 @@
-package by.sadovnick.nuetack
+package by.sadovnick.nuetack.models
+
+import by.sadovnick.nuetack.narrate
 
 class Player(
     initialName: String,
