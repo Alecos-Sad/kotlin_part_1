@@ -1,9 +1,12 @@
 package by.sadovnick.nuetack
 
 var heroName = ""
-val player = Player("Jason")
+lateinit var player: Player
 
 fun main() {
+    narrate("Welcome to NyetHack!")
+    val playerName = promptHeroName()
+    player = Player(playerName)
     val mortality = if (player.isImmortal) "an immortal" else "mortal"
     narrate("${player.name}, ${player.title}, heads to the town square")
     narrate("${player.name}, ${mortality}, has ${player.healthPoints} health points")
