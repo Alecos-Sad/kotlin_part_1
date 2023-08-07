@@ -1,9 +1,11 @@
 package by.sadovnick.nuetack.rooms
 
+import by.sadovnick.nuetack.LootBox
 import by.sadovnick.nuetack.narrate
 
 open class Room(private val name: String) {
     protected open val status = "Calm"
+    open val lootBox = LootBox.random()
 
     open fun description() = "$name (Currently: $status"
 

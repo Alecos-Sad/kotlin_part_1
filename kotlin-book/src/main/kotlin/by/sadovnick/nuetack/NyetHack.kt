@@ -8,8 +8,6 @@ fun main() {
     narrate("Welcome to NyetHack!")
     val playerName = promptHeroName()
     player = Player(playerName)
-    val lootBoxOne = LootBox(Fedora("a generic-looking fedora", 15))
-    val lootBoxTwo = LootBox(GemStones(150))
     Game.play()
 }
 

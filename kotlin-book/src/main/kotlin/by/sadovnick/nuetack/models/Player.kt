@@ -1,5 +1,6 @@
 package by.sadovnick.nuetack.models
 
+import by.sadovnick.nuetack.Loot
 import by.sadovnick.nuetack.narrate
 import by.sadovnick.nuetack.rooms.Fightable
 
@@ -44,6 +45,9 @@ class Player(
                     "best the world-eater"
                 ).random()
     }
+
+    val inventory = mutableListOf<Loot>()
+    var gold = 0
 
     init {
         require(healthPoints > 0) { "healthPoints must be greater than zero" }
