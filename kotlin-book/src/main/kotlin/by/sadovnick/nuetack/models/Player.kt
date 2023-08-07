@@ -8,7 +8,7 @@ class Player(
     val hometown: String = "Neversummer",
     override var healthPoints: Int,
     val isImmortal: Boolean
-) : Fightable{
+) : Fightable {
 
     override var name = initialName
         get() = field.replaceFirstChar { it.uppercaseChar() }
@@ -19,13 +19,9 @@ class Player(
     override val diceSides = 4
 
     override fun takeDamage(damage: Int) {
-        if(!isImmortal){
+        if (!isImmortal) {
             healthPoints -= damage
         }
-    }
-
-    override fun attack(opponent: Fightable) {
-        TODO("Not yet implemented")
     }
 
     val title: String
@@ -73,7 +69,7 @@ class Player(
         name = newName
     }
 
-    fun prophesize(){
+    fun prophesize() {
         narrate("$name thinks about their future")
         narrate("A fortune teller told Madrigal, \"$prophecy\"")
     }
