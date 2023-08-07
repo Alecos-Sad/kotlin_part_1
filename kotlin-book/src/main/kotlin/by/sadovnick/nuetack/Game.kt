@@ -5,6 +5,7 @@ import by.sadovnick.nuetack.rooms.TownSquare
 
 object Game {
     private val currentRoom: Room = TownSquare()
+    private var currentPosition = Coordinate(0, 0)
 
     init {
         narrate("Welcome, adventurer")
