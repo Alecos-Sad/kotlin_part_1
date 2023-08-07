@@ -1,19 +1,32 @@
 package by.sadovnick.nuetack.models
 
 import by.sadovnick.nuetack.narrate
+import by.sadovnick.nuetack.rooms.Fightable
 
 class Player(
     initialName: String,
     val hometown: String = "Neversummer",
-    var healthPoints: Int,
+    override var healthPoints: Int,
     val isImmortal: Boolean
-) {
+) : Fightable{
 
-    var name = initialName
+    override var name = initialName
         get() = field.replaceFirstChar { it.uppercaseChar() }
         private set(value) {
             field = value.trim()
         }
+    override val diceCount = 3
+    override val diceSides = 4
+
+    override fun takeDamage(damage: Int) {
+        if(!isImmortal){
+            healthPoints -= damage
+        }
+    }
+
+    override fun attack(opponent: Fightable) {
+        TODO("Not yet implemented")
+    }
 
     val title: String
         get() = when {
