@@ -11,15 +11,7 @@ fun main() {
     val playerName = promptHeroName()
     player = Player(playerName)
     //changeNarratorMood()
-    player.prophesize()
-//    var currentRoom = Room("The Foyer")
-    val currentRoom = Tavern()
-    val mortality = if (player.isImmortal) "an immortal" else "mortal"
-    narrate("${player.name} of ${player.hometown}, ${player.title} is in ${currentRoom.description()}")
-    narrate("${player.name}, ${mortality}, has ${player.healthPoints} health points")
-    currentRoom.enterRoom()
-    player.castFireBall()
-    player.prophesize()
+    Game.play()
 }
 
 private fun promptHeroName(): String {
