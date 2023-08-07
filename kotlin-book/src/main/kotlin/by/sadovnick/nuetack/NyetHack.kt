@@ -1,9 +1,7 @@
 package by.sadovnick.nuetack
 
 import by.sadovnick.nuetack.models.Player
-import by.sadovnick.nuetack.rooms.TownSquare
 
-var heroName = ""
 lateinit var player: Player
 
 fun main() {
