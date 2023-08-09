@@ -16,6 +16,9 @@ private fun promptHeroName(): String {
         // Выводит message желтым цветом
         "\u001b[33;1m$message\u001b[0m"
     }
-    println("Madrigal")
-    return "Madrigal"
+    val input = readLine()
+    require(!input.isNullOrEmpty()){
+        "The hero must have a name"
+    }
+    return input
 }

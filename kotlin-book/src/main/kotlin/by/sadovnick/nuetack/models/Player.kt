@@ -2,6 +2,7 @@ package by.sadovnick.nuetack.models
 
 import by.sadovnick.nuetack.Loot
 import by.sadovnick.nuetack.narrate
+import by.sadovnick.nuetack.numVowels
 import by.sadovnick.nuetack.rooms.Fightable
 
 class Player(
@@ -29,7 +30,7 @@ class Player(
         get() = when {
             name.all { it.isDigit() } -> "The Identifiable"
             name.none { it.isLetter() } -> "The Witness Protection Member"
-            name.count { it.lowercase() in "aeiou" } > 4 -> "The Master of Vowels"
+            name.numVowels > 4 -> "Master of Vowels"
             else -> "The Renowned Hero"
         }
 
