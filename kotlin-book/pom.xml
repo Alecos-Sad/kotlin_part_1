@@ -5,9 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kotlin-book</artifactId>
+    <modules>
+        <module>TaernylAir</module>
+    </modules>
     <groupId>by.sadovnick</groupId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>consoleApp</name>
 
